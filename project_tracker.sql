@@ -7,7 +7,7 @@ CREATE TABLE employee(
 	id INT NOT NULL AUTO_INCREMENT,
 	username VARCHAR(255) NOT NULL,
 	password VARCHAR(255),
-	employeeType ENUM('Manager', 'Employee'),	
+	employeeType ENUM('Manager', 'Employee', 'Admin'),	
 	name VARCHAR(255),
 	status ENUM('Active', 'Inactive') NOT NULL,
 	division ENUM('divA', 'divB', 'divC', 'divD'),
@@ -51,3 +51,12 @@ CREATE TABLE employeeProjectList(
 	projectName VARCHAR(255),
 	PRIMARY KEY (id)
 );
+
+-- Populate pre-defined admin, manager, and employee users
+INSERT INTO employee (
+	  username, password, employeeType, name, status, division
+	) VALUES
+	  ('admin', 'admin', 'Admin', 'Admin', 'Active', null),
+	  ('manager', 'manager', 'Manager', 'Manager', 'Active', 'divA'),
+	  ('empA', 'empA', 'Employee', 'EmployeeA', 'Active', 'divA')
+;

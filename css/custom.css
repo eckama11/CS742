@@ -1,0 +1,95 @@
+body{background-color: #F7F7F6; color:black;}
+.login{padding-top: 65px;}
+.center{float: none; margin-left: auto; margin-right: auto;}
+.padded {padding: 70px;}
+.error { border: 1px solid #b94a48!important; background-color: #fee!important; }
+.upayActive { color: green; font-weight: bold; }
+.upayInactive { color: red; font-weight: bold; }
+.numeric { text-align: right; }
+
+.form-control { color: black; }
+.form-control[disabled] { background-color: #ccc; }
+
+table.table.table-hover tr:hover th {
+    color: black;
+}
+
+table.table.table-hover tr:hover {
+    color: white;
+}
+
+.modal {
+    background-color: transparent;
+}
+
+.modal-content {
+    border-radius: 12px;
+    background-color: white;
+}
+
+.modal-header {
+    border-radius: 10px 10px 0 0;
+    color: white;
+    background-color: #3a6624;
+}
+
+.modal-body {
+}
+
+.modal-footer {
+    margin-top: 0px;
+    border-radius: 0 0 10px 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #538935;
+}
+
+.DepartmentSelectorView div.form-control {
+    height: 100px;
+    overflow-y: scroll;
+    padding: 5px;
+}
+
+.DepartmentSelectorView div.form-control > label {
+    display: block;
+    margin: 0;
+    padding: 2px;
+    padding-left: 6px;
+}
+
+.DepartmentSelectorView div.form-control > label.selected {
+    background-color: #eee;
+}
+
+.DepartmentSelectorView > div:nth-child(1) {
+}
+
+.DepartmentSelectorView > div:nth-child(3) {
+    font-weight: bold;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.input-group-addon {
+    color: white;
+}
+
+.datepicker table tr td.today {
+    background-color: #fff2c5;
+}
+
+.tab-content {
+    border: 2px solid darkgreen;
+    padding: 15px;
+}
+
+.nav-tabs>li>a {
+    color: #888;
+    border-top-color: #ccc;
+    border-left-color: #ccc;
+    border-right-color: #ccc;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+    background-color: #ccc;
+}

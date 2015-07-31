@@ -1,0 +1,11 @@
+<?php
+
+class DBInterface {
+
+
+
+
+
+
+
+} // DBInterface
