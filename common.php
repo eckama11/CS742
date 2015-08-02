@@ -23,7 +23,7 @@ function __autoload( $class ) {
 } // __autoload( $class )
 
 
-//$db = new DBInterface("localhost", "u_pay", "u_pay", "u_pay");
+$db = new DBInterface("localhost", "project_tracker", "project_tracker", "project_tracker");
 
 
 /**
@@ -64,12 +64,15 @@ function doUnauthenticatedRedirect() {
 
 function getLoginRedirect(LoginSession $session, $page) {
     if (!$page)
-        $page = ($session->isAdministrator
-                    ? "/Admin/Admin"
-                    : "/Employee/MyInfo");
+    	if ($session->isAdministrator)
+    		$page = "Admin/Admin";
+    	if ($session->isManager)
+    		$page = "Manager/Manager";
+    	if ($session->isEmployee)
+    		$page = "Employee/Employee";	
 
-    if ($page{0} != '/')
-        $page = '/'. $page;
+    //if ($page{0} != '/')
+      //  $page = '/'. $page;
 
     return BASE_URL ."page.php". $page;
 } // getLoginRedirect(LoginSession $session)

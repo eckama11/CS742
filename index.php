@@ -13,7 +13,64 @@ require_once("common.php");
 		<style>
         input { max-width: 100%; }
         </style>
+	<script>
+		function requiredField(elem, errorMsg) {
+			var rv = elem.val();
+			if (rv == "") {
+				elem.tooltip("destroy")
+					.addClass("error")
+					.data("title", errorMsg)
+					.tooltip();
+			} else {
+				elem.tooltip("destroy")
+					.removeClass("error")
+					.data("title", "");
+			}
+			return rv;
+		}
 
+		function showError(message) {
+			$("#message").text(message);
+			$("#messageAlert").show().delay(3000).fadeOut("slow");
+		}
+
+		function doLogin(form) {
+			var username = requiredField($(form.elements.username), "You must enter a username");
+			var password = requiredField($(form.elements.password), "You must enter a password");
+			if ((username == "") || (password == "")) {
+				showError("You must enter both a username and a password.");
+				return false;
+			}
+
+			$("#loginDiv").hide();
+			$("#spinner").show();
+
+			$.ajax({
+				"type" : "POST",
+				"url" : "doLogin.php",
+				"data" : $(form).serialize(),
+				"dataType" : "json"
+				})
+				.done(function(data) {
+					if (data.error != null) {
+						$("#spinner").hide();
+						showError(data.error);
+						$(form.elements.password).val('');
+						$("#loginDiv").show();
+					} else
+						document.location.href = data.redirect;
+				})
+				.fail(function( jqXHR, textStatus, errorThrown ) {
+					console.log("Error: "+ textStatus +" (errorThrown="+ errorThrown +")");
+					console.log(jqXHR);
+
+					$("#spinner").hide();
+					$("#loginDiv").show();
+					showError("Request failed, unable to login: "+ errorThrown);
+				})
+			return false;
+		} // doLogin
+	</script>
 	</head>
  
 	<body>
@@ -22,11 +79,7 @@ require_once("common.php");
 				<a href="#" class="navbar-brand">
 				<span class="glyphicon glyphicon-hourglass"></span>
 				Project Tracker</a>
-				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
+				
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-right">
 					</ul>
@@ -75,7 +128,7 @@ require_once("common.php");
 		</div>
 
 		<!-- JavaScript -->
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery-2.1.4.min.js"></script>
 		<script src="js/bootstrap.js"></script>
         <script>
             $('#username').focus();
