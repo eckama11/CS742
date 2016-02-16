@@ -43,8 +43,12 @@ class Employee
     public function jsonSerialize() {
         $rv = new StdClass();
         $rv->id = $this->id;
-        $rv->name = $this->name;
         $rv->username = $this->username;
+        $rv->password = $this->password;
+        $rv->employeeType = $this->employeeType;
+        $rv->name = $this->name;
+        $rv->status = $this->status;
+        $rv->division = $this->division;
         return $rv;
     } // jsonSerialize
     
@@ -106,7 +110,7 @@ class Employee
     }// setStatus
     
     protected function getDivision() {
-    	return $this->_getDivision;
+    	return $this->_division;
     }// getDivision
     
     protected function setDivision($newDivision) {

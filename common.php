@@ -64,12 +64,14 @@ function doUnauthenticatedRedirect() {
 
 function getLoginRedirect(LoginSession $session, $page) {
     if (!$page)
-    	if ($session->isAdministrator)
-    		$page = "Admin/Admin";
+    	if ($session->authenticatedEmployee->employeeType = "Admin")
+    		$page = "/Admin/Admin";
+    	/*
     	if ($session->isManager)
     		$page = "Manager/Manager";
     	if ($session->isEmployee)
-    		$page = "Employee/Employee";	
+    		$page = "Employee/Employee";
+    	*/	
 
     //if ($page{0} != '/')
       //  $page = '/'. $page;

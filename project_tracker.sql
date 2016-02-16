@@ -88,3 +88,14 @@ INSERT INTO employee (
 	  ('manager', 'manager', 'Manager', 'Manager', 'Active', 'divA'),
 	  ('empA', 'empA', 'Employee', 'EmployeeA', 'Active', 'divA')
 ;
+
+-- Populate pre-defined divisions
+INSERT INTO division (
+	  id, name
+	) VALUES
+	  (1, 'divA'),
+	  (2, 'divB'),
+	  (3, 'divC'),
+	  (4, 'divD')
+;
+
